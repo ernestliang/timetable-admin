@@ -47,7 +47,7 @@
     import Swal from 'sweetalert2'
     import Loading from 'vue-loading-overlay'
 
-    import {useStudentStore} from '@/stores/studentStore'
+    import {useStudentStore} from '@/stores/StudentStore'
 
     const isLoading = ref(false)
     const students = ref([])
