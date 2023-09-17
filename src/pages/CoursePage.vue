@@ -54,7 +54,7 @@
     import Loading from 'vue-loading-overlay'
     import {useToast} from 'vue-toastification'
 
-    import {useCourseStore} from '@/stores/courseStore'
+    import {useCourseStore} from '@/stores/CourseStore'
 
     const toast = useToast()
     const isLoading = ref(false)
