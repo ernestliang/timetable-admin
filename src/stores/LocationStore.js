@@ -3,53 +3,43 @@ import axios from 'axios'
 
 const API_URL = import.meta.env.VITE_API_URL
 
-export const useSubjectStore = defineStore('subjectStore', {
+export const useLocationStore = defineStore('locationStore', {
     state: () => ({
-        subject: {},
-        subjects: []
+        location: {},
+        locations: []
     }),
     getters: {
-        getSubject: (state) => {
-            return state.subject
+        getLocation: (state) => {
+            return state.location
         },
-        getSubjects: (state) => {
-            return state.subjects
+        getLocations: (state) => {
+            return state.locations
         },
-        getActiveSubjects: (state) => {
-            return state.subjects.filter(x => x.status = 1)
-        },
+        getActiveLocations: (state) => {
+            return state.locations.filter(x => x.status == 1)
+        }
     },
     actions: {
         retrieveAll: async function() {
-            await axios.get(`${API_URL}/subjects`)
+            await axios.get(`${API_URL}/locations`)
                 .then(result => {
-                    this.subjects = result.data
-                })
-                .catch(err => {
-                    throw err.message
-                })
-        },
-        retrieveByCourse: async function (courseId) {
-            debugger;
-            await axios.get(`${API_URL}/subject/course/${courseId}`)
-                .then(result => {
-                    this.subjects = result.data
+                    this.locations = result.data
                 })
                 .catch(err => {
                     throw err.message
                 })
         },
         retrieveById: async function(id) {
-            await axios.get(`${API_URL}/subject/id/${id}`)
+            await axios.get(`${API_URL}/location/id/${id}`)
                 .then(result => {
-                    this.subject = result.data
+                    this.course = res.data
                 })
                 .catch(err => {
                     throw err.message
                 })
         },
         update: async function(vm) {
-            await axios.put(`${API_URL}/subject`, vm)
+            await axios.put(`${API_URL}/location`, vm)
                 .then(result => {
                     return result.data
                 })
@@ -58,7 +48,7 @@ export const useSubjectStore = defineStore('subjectStore', {
                 })
         },
         mark: async function(vm) {
-            await axios.put(`${API_URL}/subject/mark`, vm)
+            await axios.put(`${API_URL}/location/mark`, vm)
             .then(res => {
                 return res.data
             })
@@ -68,13 +58,13 @@ export const useSubjectStore = defineStore('subjectStore', {
         },
         insert: async function(vm) {
             debugger
-            await axios.post(`${API_URL}/subject`, vm)
-            .then(res => {
-                return res.data
+            await axios.post(`${API_URL}/location`, vm)
+            .then(result => {
+                return result.data
             })
             .catch(err => {
                 throw err
             })
         }
-    },
+    }
 })

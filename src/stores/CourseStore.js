@@ -39,6 +39,7 @@ export const useCourseStore = defineStore('courseStore', {
             })
         },
         update: async function(vm) {
+            debugger
             await axios.put(`${API_URL}/course`, vm)
             .then(res => {
                 return res.data
@@ -57,6 +58,7 @@ export const useCourseStore = defineStore('courseStore', {
             })
         },
         insert: async function(vm) {
+            debugger
             await axios.post(`${API_URL}/course`, vm)
             .then(res => {
                 return res.data

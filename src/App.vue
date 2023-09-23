@@ -21,6 +21,11 @@
                         </li>
                         <li class="nav-item">
                             <button class="nav-link active" id="pills-accounts-tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                                <router-link to="/location">Locations</router-link>
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link active" id="pills-accounts-tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
                                 <router-link to="/student">Students</router-link>
                             </button>
                         </li>
@@ -76,10 +81,12 @@
 <style scoped lang="scss">
     a {
         text-decoration: none;
+        color:goldenrod;
     }
     a.router-link-active.router-link-exact-active {
         text-decoration: none;
         color: white;
-        font-weight: 600;
+        font-weight: 500;
+        font-size: 1.08rem;
     }
 </style>
