@@ -4,6 +4,7 @@ import SubjectPage from '../pages/SubjectPage.vue'
 import StudentPage from '../pages/StudentPage.vue'
 import TimetablePage from '../pages/TimetablePage.vue'
 import LocationPage from '../pages/LocationPage.vue'
+import UserPage from '../pages/UserPage.vue'
 
 const routes = [
     {
@@ -35,11 +36,16 @@ const routes = [
         name: "Timetables",
         component: TimetablePage
     },
+    {
+        path: '/user',
+        name: "Users",
+        component: UserPage
+    },
 ]
 
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes: routes
 })
 export default router
