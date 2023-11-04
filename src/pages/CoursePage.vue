@@ -96,7 +96,7 @@
 
     async function markCourse(targetCourse) {
         try {
-            debugger
+            
             isLoading.value = true
             await courseStore.mark(targetCourse)
             console.log("Marking Course Status")

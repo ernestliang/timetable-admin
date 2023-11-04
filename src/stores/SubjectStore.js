@@ -30,7 +30,7 @@ export const useSubjectStore = defineStore('subjectStore', {
                 })
         },
         retrieveByCourse: async function (courseId) {
-            debugger;
+            ;
             await axios.get(`${API_URL}/subject/course/${courseId}`)
                 .then(result => {
                     this.subjects = result.data
@@ -67,7 +67,7 @@ export const useSubjectStore = defineStore('subjectStore', {
             })
         },
         insert: async function(vm) {
-            debugger
+            
             await axios.post(`${API_URL}/subject`, vm)
             .then(res => {
                 return res.data

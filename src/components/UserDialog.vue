@@ -24,7 +24,7 @@
                         <div class="row mb-3">
                             <div class="col-12">
                                 <label for="code" class="form-label">Email:</label>
-                                <input type="text" id="code" class="form-control" v-model="user.userEmail" :disabled="user.userId > 0" :class="{ 'border-danger': $v.userEmail.$dirty && $v.userEmail.$invalid }">
+                                <input type="text" id="code" class="form-control" v-model="user.userEmail" :class="{ 'border-danger': $v.userEmail.$dirty && $v.userEmail.$invalid }">
                                 <div v-if="$v.userEmail.$dirty && $v.userEmail.required.$invalid" style="color: red">This field is required!</div>
                                 <!-- <div v-if="$v..$dirty && $v..minLength.$invalid" style="color: red">Minimum length is 4</div> -->
                                 <div v-if="$v.userEmail.$dirty && $v.userEmail.maxLength.$invalid" style="color: red">Maximum email length is 100 characters!</div>
@@ -33,7 +33,7 @@
                         <div class="row mb-3">
                             <div class="col-12">
                                 <label for="code" class="form-label">Password:</label>
-                                <input type="text" id="code" class="form-control" v-model="user.userPassword" :disabled="user.userId > 0" :class="{ 'border-danger': $v.userPassword.$dirty && $v.userPassword.$invalid }">
+                                <input type="text" id="code" class="form-control" v-model="user.userPassword" :class="{ 'border-danger': $v.userPassword.$dirty && $v.userPassword.$invalid }">
                                 <div v-if="$v.userPassword.$dirty && $v.userPassword.required.$invalid" style="color: red">This field is required.</div>
                                 <div v-if="$v.userPassword.$dirty && $v.userPassword.minLength.$invalid" style="color: red">Minimum password length is 5 characters!</div>
                                 <div v-if="$v.userPassword.$dirty && $v.userPassword.maxLength.$invalid" style="color: red">Maximum password length is 64 characters!</div>
@@ -124,7 +124,6 @@
     }
 
     onMounted(async() => {
-        debugger
         console.log(`User value: ${JSON.stringify(props.model)}`)
     })
 

@@ -7,7 +7,7 @@
     <div class="p-2">
         <nav class="navbar navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand">Locations</a>
+                <a class="navbar-brand">Users</a>
                 <div class="d-flex">
                     <button type="button" class="btn btn-primary" @click="addUser">ADD</button>
                 </div>
@@ -53,7 +53,7 @@
     import Swal from 'sweetalert2'
     import Loading from 'vue-loading-overlay'
     import {useToast} from 'vue-toastification'
-    import LocationDialog from '../components/LocationDialog.vue'
+    import LocationDialog from '../components/UserDialog.vue'
 
     import {useUserStore} from '@/stores/UserStore'
     const userStore = useUserStore()
@@ -69,7 +69,7 @@
         try {
             isLoading.value = true
             await userStore.retrieveAll()
-            users.value = userStore.getLocations
+            users.value = userStore.getUsers
             console.log("Loading Users")
         }
         catch (err) {
@@ -96,7 +96,7 @@
 
     async function markUser(targetUser) {
         try {
-            debugger
+            
             isLoading.value = true
             await userStore.mark(targetUser)
             console.log("Marking User Status")

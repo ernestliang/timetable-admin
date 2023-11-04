@@ -57,7 +57,7 @@ export const useLocationStore = defineStore('locationStore', {
             })
         },
         insert: async function(vm) {
-            debugger
+            
             await axios.post(`${API_URL}/location`, vm)
             .then(result => {
                 return result.data

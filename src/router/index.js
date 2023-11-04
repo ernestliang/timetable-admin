@@ -5,11 +5,19 @@ import StudentPage from '../pages/StudentPage.vue'
 import TimetablePage from '../pages/TimetablePage.vue'
 import LocationPage from '../pages/LocationPage.vue'
 import UserPage from '../pages/UserPage.vue'
+import AttendancePage from '../pages/AttendancePage.vue'
+import LoginPage from '../pages/LoginPage.vue'
+import { useUserStore } from '../stores/UserStore'
 
 const routes = [
     {
         path: "/",
-        redirect: '/course',
+        redirect: '/login',
+    },
+    {
+        path: '/login',
+        name: "Login",
+        component: LoginPage
     },
     {
         path: '/course',
@@ -41,11 +49,30 @@ const routes = [
         name: "Users",
         component: UserPage
     },
+    {
+        path: '/attendance',
+        name: "Attendance",
+        component: AttendancePage
+    },
 ]
 
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: routes
 })
+
+router.beforeEach(to => {
+    
+    const userStore = useUserStore()
+    if (to.fullPath != '/login') {
+        
+        if(userStore.getUser == null) {
+            
+            router.push('/login')
+        }
+    }
+})
+
+
 export default router

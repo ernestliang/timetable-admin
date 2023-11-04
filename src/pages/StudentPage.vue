@@ -11,7 +11,7 @@
     </div>
 
     <div class="container justify-content-center">
-        <table class="table">
+        <table class="table table-striped table-responsive w-75">
             <thead>
                 <tr> 
                     <th scope="col" class="text-center">
@@ -32,7 +32,7 @@
                     <td scope="col" class="text-primary fw-bold">
                         {{ student.email }}
                     </td>
-                    <td scope="col">
+                    <td scope="col" style="width:250px;" class="text-wrap">
                         {{ student.token }}
                     </td>
                 </tr>

@@ -133,11 +133,10 @@
     }
     async function markSubject(targetSubject) {
         try {
-            debugger
+            
             isLoading.value = true
             await subjectStore.mark(targetSubject)
-            console.log("Marking Location Status")
-            toast.success('Location status changed successfully')
+            toast.success('Subject status changed successfully')
         }
         catch(err) {
             console.log(`Error found: ${err}`)
@@ -158,7 +157,7 @@
     }
 
     watch(selectedCourse, async (newVal, oldVal) => {
-        debugger
+        
         await loadSubjects(newVal)
     })
     onMounted(async() => {

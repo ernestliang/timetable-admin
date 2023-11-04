@@ -7,7 +7,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
         
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div v-if="userStore.getUser" class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <button class="nav-link active" id="pills-accounts-tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
@@ -31,7 +31,22 @@
                         </li>
                         <li class="nav-item">
                             <button class="nav-link active" id="pills-accounts-tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                                <router-link to="/user">User</router-link>
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link active" id="pills-accounts-tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                                <router-link to="/attendance">Attendance</router-link>
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link active" id="pills-accounts-tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
                                 <router-link to="/timetable">Timetable</router-link>
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link active" id="pills-accounts-tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                                <button type="button" class="btn btn-primary" @click="logOut()">Logout</button>
                             </button>
                         </li>
                         <!-- 
@@ -76,6 +91,16 @@
 </template>
 
 <script setup>
+    import {useUserStore} from '../src/stores/UserStore'
+    import router from './router';
+    const userStore = useUserStore()
+
+    function logOut() {
+        userStore.logOut()
+        router.push('/login')
+    }
+
+
 </script>
 
 <style scoped lang="scss">

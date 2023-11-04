@@ -125,7 +125,6 @@
     }
 
     onMounted(async() => {
-        debugger
         console.log(`Subject value: ${JSON.stringify(props.model)}`)
     })
 

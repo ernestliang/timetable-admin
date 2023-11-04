@@ -96,7 +96,7 @@
 
     async function markLocation(targetLocation) {
         try {
-            debugger
+            
             isLoading.value = true
             await locationStore.mark(targetLocation)
             console.log("Marking Location Status")

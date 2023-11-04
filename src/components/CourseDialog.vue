@@ -102,7 +102,6 @@
     }
 
     onMounted ( async () => {
-        debugger
         console.log(`Course value: ${props.model}`)
     })
 

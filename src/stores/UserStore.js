@@ -2,15 +2,16 @@ import {defineStore} from 'pinia'
 import axios from 'axios'
 
 const API_URL = import.meta.env.VITE_API_URL
+const AUTH_KEY = 'timetable-admin-user'
 
 export const useUserStore = defineStore('userStore', {
     state: () => ({
-        user: {},
+        user: null,
         users: []
     }),
     getters: {
         getUser: (state) => {
-            return state.user
+            return state.user || JSON.parse(localStorage.getItem(AUTH_KEY))
         },
         getUsers: (state) => {
             return state.users
@@ -21,9 +22,10 @@ export const useUserStore = defineStore('userStore', {
     },
     actions: {
         retrieveAll: async function() {
+            
             await axios.get(`${API_URL}/users`)
                 .then(res => {
-                    this.courses = res.data
+                    this.users = res.data
                 })
                 .catch(err => {
                     throw err.message
@@ -39,7 +41,7 @@ export const useUserStore = defineStore('userStore', {
             })
         },
         update: async function(vm) {
-            debugger
+            
             await axios.put(`${API_URL}/user`, vm)
             .then(res => {
                 return res.data
@@ -58,7 +60,7 @@ export const useUserStore = defineStore('userStore', {
             })
         },
         insert: async function(vm) {
-            debugger
+            
             await axios.post(`${API_URL}/user`, vm)
             .then(res => {
                 return res.data
@@ -66,6 +68,22 @@ export const useUserStore = defineStore('userStore', {
             .catch(err => {
                 throw err
             })
+        },
+        authenticate: async function(vm) {
+            await axios.post(`${API_URL}/user/authenticate`, vm)
+            .then(res => {
+                
+                this.user = res.data
+                localStorage.setItem(AUTH_KEY, JSON.stringify(this.user))
+            })
+            .catch(err => {
+                
+                throw err
+            })
+        },
+        logOut: function() {
+            this.user = null
+            localStorage.removeItem(AUTH_KEY)
         }
     },
 })
