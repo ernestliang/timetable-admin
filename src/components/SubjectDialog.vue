@@ -70,6 +70,9 @@
     import Loading from 'vue-loading-overlay'
     const isLoading = ref(false)
 
+    const emit = defineEmits(['subjectModalClosed'])
+    const props = defineProps(['model', 'courses'])
+
     import {useToast} from 'vue-toastification'
     const toast = useToast()
 
@@ -86,8 +89,6 @@
     import {useSubjectStore} from '../stores/SubjectStore'
     const subjectStore = useSubjectStore()
 
-    const emit = defineEmits(['subjectModalClosed'])
-    const props = defineProps(['model', 'courses'])
 
     function closeDialog() {
         emit('subjectModalClosed')
