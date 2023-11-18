@@ -72,12 +72,15 @@ export const useUserStore = defineStore('userStore', {
         authenticate: async function(vm) {
             await axios.post(`${API_URL}/user/authenticate`, vm)
             .then(res => {
-                
-                this.user = res.data
-                localStorage.setItem(AUTH_KEY, JSON.stringify(this.user))
+                if (res.data) {
+                    this.user = res.data
+                    localStorage.setItem(AUTH_KEY, JSON.stringify(this.user))
+                }
+                else {
+                    throw err
+                }
             })
             .catch(err => {
-                
                 throw err
             })
         },

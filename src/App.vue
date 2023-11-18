@@ -114,4 +114,8 @@
         font-weight: 500;
         font-size: 1.08rem;
     }
+
+    button.navbar-toggler {
+        background-color: white;
+    }
 </style>

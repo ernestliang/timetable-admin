@@ -119,4 +119,9 @@
         }
     }
 
+    onMounted( () => {
+        if(userStore.getUser) {
+            router.push("/course")
+        }
+    })
 </script>
