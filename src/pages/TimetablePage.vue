@@ -90,15 +90,29 @@
             await postCreateUpdateEvent(evt)
         },
         onEventDeleted: async (args) => {
+            debugger
+            Swal.fire({
+                title: "Are you sure you want to DELETE this lesson?",
+                showDenyButton: true,
+                confirmButtonText: "Delete",
+                denyButtonText: `Don't Delete`
+            })
+            .then(async(result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                
+                    let evt = {
+                        subjectId: args.e.data.subjectId,
+                        subjectName: args.e.data.text,
+                        courseName: courses.value.find(x => x.courseId == selectedCourse.value).courseName,
+                        newDay: parseInt(args.e.data.resource),
+                        timetableId: args.e.data.id
+                    }
+                    await postDeleteEvent(evt)
+                }
+            });
             
-            let evt = {
-                subjectId: args.e.data.subjectId,
-                subjectName: args.e.data.text,
-                courseName: courses.value.find(x => x.courseId == selectedCourse.value).courseName,
-                newDay: parseInt(args.e.data.resource),
-                timetableId: args.e.data.id
-            }
-            await postDeleteEvent(evt)
+            
         },
         onBeforeEventRender: args => {
             args.data.areas = []
