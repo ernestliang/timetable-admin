@@ -67,6 +67,7 @@
     import Swal from 'sweetalert2'
     import Loading from 'vue-loading-overlay'
     const isLoading = ref(false)
+    const props = defineProps(['model', 'users'])
 
     import {useToast} from 'vue-toastification'
     const toast = useToast()
@@ -85,7 +86,6 @@
     const userStore = useUserStore()
 
     const emit = defineEmits(['usersubjectModalClosed'])
-    const props = defineProps(['model', 'users'])
     const users = toRef(props.users)
 
     function closeDialog() {

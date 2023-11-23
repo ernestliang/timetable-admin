@@ -45,6 +45,8 @@
     import Loading from 'vue-loading-overlay'
     const isLoading = ref(false)
 
+    const props = defineProps(['model'])
+
     import {useToast} from 'vue-toastification'
     const toast = useToast()
 
@@ -61,7 +63,6 @@
     const locationStore = useLocationStore()
 
     const emit = defineEmits(['locationModalClosed'])
-    const props = defineProps(['model'])
 
     function closeDialog() {
         emit('locationModalClosed')
